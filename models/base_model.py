@@ -6,9 +6,13 @@ from datetime import datetime
 class BaseModel:
     def __init__(self, *args, **kwargs):
         if len(kwargs) is not 0:
-            self.updated_at = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            self.created_at = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            self.id = kwargs["id"]
+            for key, value in kwargs.items():
+                if key == "updated_at":
+                    self.updated_at = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                elif key == "created_at":
+                    self.created_at = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                elif key != "__class__":
+                    setattr(self, key, value)
         else:
             self.updated_at = datetime.today()
             self.created_at = datetime.today()
