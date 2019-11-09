@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-
+from models.base_model import BaseModel
 from os.path import exists
 import json
 
 class FileStorage:
-    def __init__(self, file_path):
-        self.__file_path = file_path
-        self.__objects = {}
+    __file_path = "file.json"
+    __objects = {}
 
     def all(self):
         return self.__objects
@@ -26,4 +25,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 content = f.read()
                 if len(content):
-                    self.__objects = json.loads(f.read())
+                    new_dict = json.loads(content)
+                    for key, value in new_dict.items():
+                        self.__objects[key] = BaseModel(**value)
