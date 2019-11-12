@@ -3,8 +3,9 @@
 Module for class BaseModel
 """
 from uuid import uuid4
-from datetime import datetime
+from datetime.datetime import strptime
 import models
+
 
 class BaseModel:
     """ BaseModel class
@@ -14,21 +15,22 @@ class BaseModel:
         if len(kwargs) is not 0:
             for key, value in kwargs.items():
                 if key == "updated_at":
-                    self.updated_at = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.updated_at = strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 elif key == "created_at":
-                    self.created_at = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.created_at = strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
             self.updated_at = datetime.today()
             self.created_at = datetime.today()
             self.id = str(uuid4())
-            models.storage.new(self)                
+            models.storage.new(self)
 
     def __str__(self):
         """ prints the representation string of the instance
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """ Saves the instance to a json file"""
