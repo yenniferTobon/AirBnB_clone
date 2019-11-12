@@ -5,6 +5,7 @@ import cmd
 from models.base_model import BaseModel
 import models
 
+
 class HBNBCommand(cmd.Cmd):
     """ HBNBCommand class - allow us to work in interactive mode """
     prompt = "(hbnb) "
@@ -58,18 +59,19 @@ class HBNBCommand(cmd.Cmd):
             for key, obj in models.storage.all().items():
                 if key == argument_split[0]+"."+argument_split[1]:
                     aux = 1
-                    print(obj)   
+                    print(obj)
             if aux == 0:
                 print("** no instance found **")
+
     def help_show(self):
         """ help function for the show command """
         print("print an instance based on the class name and id")
-    
+
     def do_destroy(self, argv):
         """ destroys an instance """
         argument_split = argv.split()
         aux = 0
-        
+
         if len(argument_split) == 0:
             print("** class name missing **")
         elif argument_split[0] != "BaseModel":
@@ -93,7 +95,8 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, argv):
         """ prints all instances """
         list_obj = []
-        if (argv == "BaseModel" and len(argv.split()) < 2) or len(argv.split()) == 0:
+        if (argv == "BaseModel" and
+                len(argv.split()) < 2 or len(argv.split()) == 0):
             models.storage.reload()
             for key, obj in models.storage.all().items():
                 list_obj.append(obj.__str__())
@@ -102,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def help_all(self):
-        print("Prints all string representation of all instances based or not on the class name")
+        print("Prints all all instances based or not on the class name")
 
     def do_update(self, argv):
         """ updates or adds a new attribute to a specific instance """
@@ -124,10 +127,10 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[argument_split[2]] = argument_split[3]
             if flag == 0:
                 print("** no instance found **")
+
     def help_update(self):
         print("Updates an instance based on the class name and id")
 
-
-if __name__ == "__main__": 
+if __name__ == "__main__":
     """ Entry point of the console """
     HBNBCommand().cmdloop()
