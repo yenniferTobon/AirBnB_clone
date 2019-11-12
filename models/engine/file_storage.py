@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 from os.path import exists
 import json
 
+
 class FileStorage:
     """ FileStorage class """
     __file_path = "file.json"
@@ -23,7 +24,7 @@ class FileStorage:
         """ Saves all the dictionary objects to a json file """
         new_dict = {}
         for key, obj in self.__objects.items():
-            new_dict[key] =  obj.to_dict()
+            new_dict[key] = obj.to_dict()
         with open(self.__file_path, 'w+') as f:
             f.write(json.dumps(new_dict))
 
