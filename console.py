@@ -54,6 +54,8 @@ class HBNBCommand(cmd.Cmd):
                     print(obj)   
             if aux == 0:
                 print("** no instance found **")
+    def help_show(self):
+        print("print an instance based on the class name and id")
     
     def do_destroy(self, argv):
         argument_split = argv.split()
@@ -73,6 +75,39 @@ class HBNBCommand(cmd.Cmd):
                     models.storage.save()
                     return
             if aux == 0:
+                print("** no instance found **")
+
+    def help_destroy(self):
+        print("delete an instance based on the class name and id")
+
+    def do_all(self, argv):
+        list_obj = []
+        if (argv == "BaseModel" and len(argv.split()) < 2) or len(argv.split()) == 0:
+            models.storage.reload()
+            for key, obj in models.storage.all().items():
+                list_obj.append(obj.__str__())
+                print(list_obj)
+        elif argv != "BaseModel":
+            print("** class doesn't exist **")
+
+    def do_update(self, argv):
+        argument_split = argv.split()
+        flag = 0
+
+        if len(argument_split) == 0:
+            print("** class name missing **")
+        elif argument_split[0] != "BaseModel":
+            print("** class doesn't exist **")
+        elif len(argument_split) == 1:
+            print("** instance id missing **")
+        elif len(argument_split) <= 3:
+            print("** value missing **")
+        elif argument_split[0] == "BaseModel" and len(argument_split) == 4:
+            for key, obj in models.storage.all().items():
+                if key == argument_split[0]+"."+argument_split[1]:
+                    flag = 1
+                    obj.__dict__[argument_split[2]] = argument_split[3]
+            if flag == 0:
                 print("** no instance found **")
 
 if __name__ == "__main__": 
