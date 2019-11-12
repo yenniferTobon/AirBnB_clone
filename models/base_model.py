@@ -3,7 +3,7 @@
 Module for class BaseModel
 """
 from uuid import uuid4
-from datetime.datetime import strptime
+from datetime import datetime
 import models
 
 
@@ -15,9 +15,11 @@ class BaseModel:
         if len(kwargs) is not 0:
             for key, value in kwargs.items():
                 if key == "updated_at":
-                    self.updated_at = strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    d = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.updated_at = d
                 elif key == "created_at":
-                    self.created_at = strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    d = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.created_at = d
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
