@@ -38,7 +38,14 @@ class Test_BaseModel(unittest.TestCase):
     def test_save(self):
         self.obj.save()
         key = self.obj.__class__.__name__+"."+self.obj.id
-        self.assertEqual(self.obj, models.storage.all()[key]) 
+        self.assertEqual(self.obj, models.storage.all()[key])
+
+    def test_to_dict(self):
+        new_dict = self.obj.__dict__.copy()
+        new_dict["__class__"] = self.obj.__class__.__name__
+        new_dict["created_at"] = new_dict["created_at"].isoformat()
+        new_dict["updated_at"] = new_dict["updated_at"].isoformat()
+        self.assertDictEqual(new_dict, self.obj.to_dict())  
         
 
 if __name__ == "__main__":
