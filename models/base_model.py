@@ -23,8 +23,8 @@ class BaseModel:
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
-            self.updated_at = datetime.today()
             self.created_at = datetime.today()
+            self.updated_at = self.created_at
             self.id = str(uuid4())
             models.storage.new(self)
 
