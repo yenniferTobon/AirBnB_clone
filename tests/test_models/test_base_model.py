@@ -74,6 +74,17 @@ class Test_BaseModel(unittest.TestCase):
         self.obj.save()
         key = self.obj.__class__.__name__+"."+self.obj.id
         self.assertEqual(self.obj, models.storage.all()[key])
+        self.assertNotEqual(self.obj.created_at, self.obj.updated_at)
+        self.assertTrue(os.path.exists(self.path_file))
+
+    def test_save_content(self):
+        """Test to compare the saved in json file with to_dic()"""
+        self.obj.save()
+        dict_to_load = {}
+        with open(self.path_file, 'r') as f:
+                dict_to_load = json.loads(f.read())
+        self.assertDictEqual(
+            self.obj.to_dict(), dict_to_load['BaseModel.' + self.obj.id])
 
     def test_to_dict(self):
         """Test to compare to two dictonary
@@ -83,6 +94,8 @@ class Test_BaseModel(unittest.TestCase):
         new_dict["created_at"] = new_dict["created_at"].isoformat()
         new_dict["updated_at"] = new_dict["updated_at"].isoformat()
         self.assertDictEqual(new_dict, self.obj.to_dict())
+        self.assertEqual(self.obj.to_dict()['__class__'], "BaseModel")
+        self.assertEqual(type(self.obj).__name__, "BaseModel")
 
 if __name__ == "__main__":
     unittest.main()
