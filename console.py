@@ -10,7 +10,7 @@ from models.review import Review
 from models.place import Place
 from models.state import State
 import models
-
+import shlex
 
 class HBNBCommand(cmd.Cmd):
     """ HBNBCommand class - allow us to work in interactive mode """
@@ -124,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """ updates or adds a new attribute to a specific instance """
-        args = line.split(" ", 3)
+        args = shlex.split(line)
         size = len(args)
         db = models.storage.all()
         if size == 0:
@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             new_dict = db[args[0] + "." + args[1]].to_dict()
-            val = args[3][1:-1]
+            val = args[3]
             if self.is_int(val):
                 val = int(val)
             elif self.is_float(val):
