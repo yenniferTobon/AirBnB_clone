@@ -3,6 +3,12 @@
 Module for FileStorage class and its functions
 """
 from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.review import Review
+from models.place import Place
+from models.state import State
 from os.path import exists
 import json
 
@@ -36,4 +42,20 @@ class FileStorage:
                 if len(content):
                     new_dict = json.loads(content)
                     for key, value in new_dict.items():
-                        self.__objects[key] = BaseModel(**value)
+                        cls = key.split(".")
+                        obj = None
+                        if cls[0] == "BaseModel":
+                            obj = BaseModel(**value)
+                        elif cls[0] == "User":
+                            obj = User(**value)
+                        elif cls[0] == "State":
+                            obj = State(**value)
+                        elif cls[0] == "City":
+                            obj = City(**value)
+                        elif cls[0] == "Amenity":
+                            obj = Amenity(**value)
+                        elif cls[0] == "Place":
+                            obj = Place(**value)
+                        elif cls[0] == "Review":
+                            obj = Review(**value)
+                        self.__objects[key] = obj
