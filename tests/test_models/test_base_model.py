@@ -27,6 +27,12 @@ class Test_BaseModel(unittest.TestCase):
         """
         self.assertEqual(type(self.obj.id), str)
 
+    def test_add_Atrribute(self):
+        self.obj.name = "Holberton"
+        self.obj.my_number = 89
+        self.assertTrue(self.obj.name)
+        self.assertTrue(self.obj.my_number)
+
     def test_docString(self):
         """Test if function and class have docString
         """
@@ -49,6 +55,18 @@ class Test_BaseModel(unittest.TestCase):
         """Test that created_at is instance of datetime
         """
         self.assertIsInstance(self.obj.created_at, datetime)
+
+    def test_updated_at_Is_datatime(self):
+        """Test that updated_at is instance of datetime
+        """
+        self.assertIsInstance(self.obj.updated_at, datetime)
+
+    def test_str(self):
+        """ Test function __str__
+        """
+        s = "[{}] ({}) {}".format(
+            self.obj.__class__.__name__, self.obj.id, self.obj.__dict__)
+        self.assertEqual(self.obj.__str__(), s)
 
     def test_save(self):
         """Test save objects in a json file
