@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
             for key, obj in models.storage.all().items():
                 list_obj.append(obj.__str__())
             print(list_obj)
-        elif not argv in self.__names:
+        elif not (argv in self.__names):
             print("** class doesn't exist **")
 
     def help_all(self):
