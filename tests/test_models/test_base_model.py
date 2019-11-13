@@ -6,7 +6,8 @@ from datetime import datetime
 import pep8
 import uuid
 import models
-
+import os
+import json
 
 class Test_BaseModel(unittest.TestCase):
     """ Class to test
@@ -75,13 +76,13 @@ class Test_BaseModel(unittest.TestCase):
         key = self.obj.__class__.__name__+"."+self.obj.id
         self.assertEqual(self.obj, models.storage.all()[key])
         self.assertNotEqual(self.obj.created_at, self.obj.updated_at)
-        self.assertTrue(os.path.exists(self.path_file))
+        self.assertTrue(os.path.exists("file.json"))
 
     def test_save_content(self):
         """Test to compare the saved in json file with to_dic()"""
         self.obj.save()
         dict_to_load = {}
-        with open(self.path_file, 'r') as f:
+        with open("file.json", 'r') as f:
                 dict_to_load = json.loads(f.read())
         self.assertDictEqual(
             self.obj.to_dict(), dict_to_load['BaseModel.' + self.obj.id])
@@ -96,6 +97,3 @@ class Test_BaseModel(unittest.TestCase):
         self.assertDictEqual(new_dict, self.obj.to_dict())
         self.assertEqual(self.obj.to_dict()['__class__'], "BaseModel")
         self.assertEqual(type(self.obj).__name__, "BaseModel")
-
-if __name__ == "__main__":
-    unittest.main()
