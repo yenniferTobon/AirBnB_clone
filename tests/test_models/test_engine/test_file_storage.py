@@ -44,7 +44,7 @@ class Test_FileStorage(unittest.TestCase):
     def test_path_file(self):
         """Test path_file
         """
-        self.assertTrue(os.path.exists("file.json"))
+        self.obj_storage._FileStorage__file_path)
 
     def test_save_content(self):
         """Test to compare the saved in json file with to_dic()
