@@ -12,6 +12,7 @@ from models.state import State
 import models
 import shlex
 
+
 class HBNBCommand(cmd.Cmd):
     """ HBNBCommand class - allow us to work in interactive mode """
     prompt = "(hbnb) "

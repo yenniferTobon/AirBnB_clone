@@ -9,6 +9,7 @@ import models
 import os
 import json
 
+
 class Test_City(unittest.TestCase):
     """ Class to test
     """
