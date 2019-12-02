@@ -2,7 +2,7 @@ div section{
 	background-color: #FFFFFF;
 	height: 70px;
 	width: 100%;
-	border :1px solid #DDDDDD;
+	border: 1px solid #DDDDDD;
 	border-radius: 4px;
 }
 
@@ -12,8 +12,13 @@ div section button{
 	color: #FFFFFF;
 	height: 48px;
 	width: 20%;
-	margin: 11px 11px 40px 650px;
 	border:0px;
 	border-radius: 4px;
-	right: 100px;
+	position: relative;
+	top: 11px;
+	bottom: 11px;
+	right: 30px;
+	left: 650px;
+	opacity: 0.9;
 }
+
