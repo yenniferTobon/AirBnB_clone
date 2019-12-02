@@ -26,7 +26,7 @@ section.filters button {
 .amenities{
 	height: 100%;
 	width: 25%;
-	top: -155px;
+	top: -156px;
 	bottom: 0px;
 	right: 0px;	
 	left: 25%;
@@ -42,10 +42,11 @@ section.filters button {
 	height: 100%;
 	width: 25%;
 	position: relative;
-	top: 0px%;
+	top: -67px;
 	bottom: 67px;
 	right: 0px;
 	left: 0px;
+	list-style:none;
 }
 
 .locations:hover .popover {
@@ -53,7 +54,7 @@ section.filters button {
 }
 
 h2{
-	margin: 14px 0px 5px 0px;
+	margin: 0px;
 	padding: 0px;
 	font-size: 16px;
 }
@@ -85,9 +86,12 @@ h4{
 	position: relative;
 	border:  #DDDDDD solid 1px;
 	z-index: 1;
-}
-
-.popover {
 	display: none;	
+	top: -5px;
+	padding-bottom: 18px;
+	padding-top: 18px;
 }
 
+li{
+	list-style: none;
+}
