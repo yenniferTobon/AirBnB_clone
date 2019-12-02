@@ -2,9 +2,12 @@ body{
 	margin: 0px;
 	padding: 0px;
 }
-.container{
-        width: 900px;
-        margin: 30px 160px;
-        align: center;
-}
 
+.container {
+	max-width: 900px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-right: auto;
+	margin-left: auto;
+	align-items: center;
+}
