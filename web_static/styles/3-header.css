@@ -6,9 +6,11 @@ header {
 	border-bottom-color: #CCCCCC;
 	border-bottom-style: solid;
 }
+
 .logo{
 	background: url("/home/yenn/AirBnB_clone/web_static/images/logo.png");
 	margin: 0px 20px;
 	width: 140px;
   	height: 60px
 }
+
