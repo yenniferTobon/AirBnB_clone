@@ -1,3 +1,29 @@
+
 .places h1{
-	font-size: 30px; 
+	font-size: 30px;
+	width: 390px;
+	position: relative;
+	left: 4px;
+}
+
+article h2{
+	width: 360px;
+	padding: 20px;
+	margin: 20px;
+	border: #FF5A5F solid 1px; 
+	border-radius: 4px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.house{
+	position: relative;
+	top: -96px;
+	left:450px;
+}
+
+.suite{
+	position: relative;
+	top: -77px;
+	left: 230px;
 }
