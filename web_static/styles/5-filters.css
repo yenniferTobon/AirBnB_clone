@@ -1,0 +1,66 @@
+div section{
+	background-color: #FFFFFF;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+}
+
+div section button{
+	font-size: 18px;
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	height: 48px;
+	width: 20%;
+	border:0px;
+	border-radius: 4px;
+	position: relative;
+	top: 11px;
+	bottom: 11px;
+	right: 30px;
+	left: 650px;
+	opacity: 0.9;
+}
+
+div section div{
+	height: 100%;
+	width: 25%;
+	position: relative;
+	top: 0px%;
+	bottom: 67px;
+	right: 0px;
+	left: 0px;
+}
+.amenities{
+	height: 100%;
+	width: 25%;
+	position: relative;
+	top: -155px;
+	bottom: 0px;
+	right: 0px;
+	padding-left: 25%;
+}
+
+.locations{
+	border-right: 1px solid #DDDDDD;
+}
+
+h3{
+	font-weight: 600;
+	position: relative;
+	top: 12px;
+	bottom: 2px;
+	right: 0px;
+	left: 80px;
+}
+
+h4{
+	font-weight: 400;
+	font-size: 14px;
+	position: relative;
+	top: 0px;
+	bottom: 8px;
+	right: 0px;
+	left: 79px;
+}
+
