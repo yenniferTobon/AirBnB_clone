@@ -19,6 +19,9 @@ div section button{
 	bottom: 11px;
 	right: 30px;
 	left: 750px;
-	opacity: 0.9;
 }
 
+button: hover{
+	opacity: 0.9
+}
+ 
