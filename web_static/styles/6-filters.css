@@ -20,7 +20,6 @@ section.filters button {
 	bottom: 11px;
 	right: 30px;
 	left: 750px;
-	opacity: 0.9;
 }
 
 .amenities{
@@ -94,4 +93,8 @@ h4{
 
 li{
 	list-style: none;
+}
+
+button: hover{
+        opacity: 0.9
 }
